@@ -1,3 +1,4 @@
 - `yarn`
-- `yarn workspace rr dev` to start react-router version, visit `http://localhost:5173/posts/1` and see logs
-- `yarn workspace ts dev` to start tanstack-start version, visit `http://localhost:3000/posts/1` and see logs
+- `yarn workspace rr dev` to start react-router version, visit `http://localhost:5173/posts/1` and see logs for render tree
+- `yarn workspace ts dev` to start tanstack-start version, visit `http://localhost:3000/posts/1` and see logs for render tree
+- click show text and reload, see error in tanstack, but not react-router, due to how the render process works

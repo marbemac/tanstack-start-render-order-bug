@@ -3,42 +3,39 @@ import { fetchPost } from "../utils/posts";
 import type { ErrorComponentProps } from "@tanstack/react-router";
 import { NotFound } from "~/components/NotFound";
 import { useEffect } from "react";
+import { useTextContext } from "~/providers";
+import { observer } from "mobx-react-lite";
 
 export const Route = createFileRoute("/posts/$postId")({
-  loader: ({ params: { postId } }) => fetchPost({ data: postId }),
-  errorComponent: PostErrorComponent,
-  component: PostComponent,
-  notFoundComponent: () => {
-    return <NotFound>Post not found</NotFound>;
-  },
+  component: PostRoute,
 });
 
-function PostErrorComponent({ error }: ErrorComponentProps) {
-  return <ErrorComponent error={error} />;
-}
-
-function PostComponent() {
-  const post = Route.useLoaderData();
-
-  console.log("Post.render");
-  useEffect(() => {
-    console.log("Post.mount");
-  }, []);
-
+function PostRoute() {
   return (
     <div className="space-y-2">
-      <h4 className="text-xl font-bold underline">{post.title}</h4>
-      <div className="text-sm">{post.body}</div>
-      <Link
-        to="/posts/$postId/deep"
-        params={{
-          postId: post.id,
-        }}
-        activeProps={{ className: "text-black font-bold" }}
-        className="block py-1 text-blue-800 hover:text-blue-600"
-      >
-        Deep View
-      </Link>
+      <TextToggle />
     </div>
   );
 }
+
+const TextToggle = observer(() => {
+  const store = useTextContext();
+
+  console.log("PostRoute.render", store.showText);
+  useEffect(() => {
+    console.log("PostRoute.mount");
+  }, []);
+
+  return (
+    <>
+      <button
+        onClick={() => store.setShowText(!store.showText)}
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        {store.showText ? "Hide Text" : "Show Text"}
+      </button>
+
+      {store.showText && <p className="mt-4 italic">some random text</p>}
+    </>
+  );
+});
