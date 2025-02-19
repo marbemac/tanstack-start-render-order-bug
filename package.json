@@ -1,0 +1,14 @@
+{
+  "name": "tanstack-start-render-order-bug",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "yarn@4.6.0",
+  "engines": {
+    "node": ">= 20"
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*"
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+- `yarn`
+- `yarn workspace rr dev` to start react-router version
+- `yarn workspace ts dev` to start tanstack-start version
