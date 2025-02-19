@@ -1,3 +1,3 @@
 - `yarn`
-- `yarn workspace rr dev` to start react-router version
-- `yarn workspace ts dev` to start tanstack-start version
+- `yarn workspace rr dev` to start react-router version, visit `http://localhost:5173/posts/1` and see logs
+- `yarn workspace ts dev` to start tanstack-start version, visit `http://localhost:3000/posts/1` and see logs
