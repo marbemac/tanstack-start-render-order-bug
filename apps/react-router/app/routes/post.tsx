@@ -18,9 +18,9 @@ export default function Post() {
 const TextToggle = observer(() => {
   const store = useTextContext();
 
-  console.log("PostRoute.render", store.showText);
+  console.log("PostRoute.render", { showText: store.showText });
   useEffect(() => {
-    console.log("PostRoute.mount");
+    console.log("PostRoute.mount", { showText: store.showText });
   }, []);
 
   return (

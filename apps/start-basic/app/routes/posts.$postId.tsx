@@ -1,7 +1,4 @@
-import { ErrorComponent, Link, createFileRoute } from "@tanstack/react-router";
-import { fetchPost } from "../utils/posts";
-import type { ErrorComponentProps } from "@tanstack/react-router";
-import { NotFound } from "~/components/NotFound";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useTextContext } from "~/providers";
 import { observer } from "mobx-react-lite";
@@ -21,9 +18,9 @@ function PostRoute() {
 const TextToggle = observer(() => {
   const store = useTextContext();
 
-  console.log("PostRoute.render", store.showText);
+  console.log("PostRoute.render", { showText: store.showText });
   useEffect(() => {
-    console.log("PostRoute.mount");
+    console.log("PostRoute.mount", { showText: store.showText });
   }, []);
 
   return (
